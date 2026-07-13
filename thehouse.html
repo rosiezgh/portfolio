@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The House — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="thehouse-page">
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="nav-logo">Rosie Zghaib</a>
+      <nav class="nav-links">
+        <a href="index.html#work">Portfolio</a>
+        <a href="contact.html">Contact Me</a>
+        <a href="resume.pdf" target="_blank" rel="noopener" class="nav-link-external">
+          Resume
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M7 17 17 7"/><path d="M7 7h10v10"/>
+          </svg>
+        </a>
+      </nav>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="nav-overlay" aria-hidden="true">
+    <button class="nav-overlay-close" aria-label="Close menu">&times;</button>
+    <nav class="nav-overlay-links">
+      <a href="index.html#work">Portfolio</a>
+      <a href="contact.html">Contact Me</a>
+      <a href="resume.pdf" target="_blank" rel="noopener" class="nav-link-external">
+        Resume
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M7 17 17 7"/><path d="M7 7h10v10"/>
+        </svg>
+      </a>
+    </nav>
+  </div>
+
+  <!-- ── Project Hero ── -->
+  <section class="project-hero">
+    <div class="project-hero-img">
+      <!-- Insert hero image here -->
+           <img class="hero-bg" src="assets/images/hero_thehouse.webp" alt="The House Hero" />
+    </div>
+  </section>
+
+  <h1 class="project-title">The House</h1>
+
+  <!-- ── Overview + Content ── -->
+  <section class="project-content">
+    <div class="container project-content-grid">
+
+      <!-- Left column: Overview -->
+      <aside class="project-overview">
+        <h2>OVERVIEW</h2>
+
+        <div class="overview-block">
+          <span class="overview-label">Role</span>
+          <p class="overview-value">Sole designer & developer</p>
+        </div>
+
+        <div class="overview-block">
+          <span class="overview-label">Type</span>
+          <p class="overview-value">Discursive Game Design</p>
+        </div>
+
+        <div class="overview-block">
+          <span class="overview-label">Year</span>
+          <p class="overview-value">2026</p>
+        </div>
+
+        <div class="overview-block">
+          <span class="overview-label">Tools Used</span>
+           <div class="tool-icons">
+            <img class="tool-icon" src="assets/images/figma.webp" alt="Figma" title="Figma" />
+            <img class="tool-icon" src="assets/images/gdevelop.webp" alt="GDevelop" title="GDevelop" />
+          </div>
+        </div>
+
+        <a href="#the-design" class="play-prototype-btn">
+          Skip to Design
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 5v14" />
+            <path d="M19 12l-7 7-7-7" />
+          </svg>
+        </a>
+
+        <!-- Replace href with the Figma prototype link -->
+        <a href="https://gd.games/rosiezg/the-house" target="_blank" rel="noopener noreferrer" class="play-prototype-btn play-prototype-btn-outline">
+          Play Prototype
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M7 17 17 7" />
+            <path d="M7 7h10v10" />
+          </svg>
+        </a>
+        <p class="sound-on-note">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M11 5 6 9H2v6h4l5 4Z" />
+            <path d="M15.5 8.5a5 5 0 0 1 0 7" />
+            <path d="M18.5 5.5a9 9 0 0 1 0 13" />
+          </svg>
+          Best played with sound on
+        </p>
+      </aside>
+
+      <!-- Right column: Problem / Concept / Project Goals -->
+      <div class="project-main">
+
+        <div class="project-block">
+          <h2>PROBLEM</h2>
+          <p><b>Existing tools against gambling addiction all target the same person: the one who's already addicted.</b>
+            Nobody exposes the system and the mechanisms that make problematic gambling possible in the first place. That was the gap.</p>
+        </div>
+
+        <div class="project-block">
+          <h2>CONCEPT</h2>
+          <p><b>This game flips the perspective.</b>
+            Instead of warning the player, The House makes them the supervisor.
+             The player monitors gamblers, makes decisions, and keeps profit up. Every decision forces a choice: to protect the gambler, or protect the casino's profit. You rarely get both.
+        </div>
+
+        <div class="project-block">
+          <h2>GOAL</h2>
+           <p>The main goal of this project is to raise awareness of gambling harm and how it can affect the gambler along with loved ones around them.  This project uses <b>discursive design:</b> design made to provoke thought and spark reflection rather than to sell or solve. Instead of informing players about gambling, The House lets them experience the system from the inside and reach their own conclusions.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Process ── -->
+  <section class="process-section">
+    <div class="container">
+      <h1 class="process-title">THE PROCESS</h1>
+
+      <div class="process-row">
+        <a href="#research" class="process-card">
+          <div class="process-icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+          </div>
+          <p class="process-label">Research</p>
+        </a>
+
+        <a href="#define" class="process-card">
+          <div class="process-icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          </div>
+          <p class="process-label">Low-fi Prototyping</p>
+        </a>
+
+        <a href="#information-architecture" class="process-card">
+          <div class="process-icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <p class="process-label">User Testing</p>
+        </a>
+
+        <a href="#wireframing" class="process-card">
+          <div class="process-icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10"/><path d="M20.49 15a9 9 0 0 1-14.85 3.36L1 14"/></svg>
+          </div>
+          <p class="process-label">Iteration</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Research ── -->
+  <section class="research-section">
+    <div class="container">
+      <h2 id="research" class="research-heading">01 / RESEARCH</h2>
+
+      <div class="research-box">
+        <div class="research-top">
+          <aside class="research-overview">
+            <h3>OVERVIEW</h3>
+            <ul class="research-list">
+              <li>Background Research</li>
+              <li>Competitive Analysis</li>
+              <li>Design References</li>
+              <li>Problem Framing</li>
+              <li>Design Question</li>
+            </ul>
+          </aside>
+
+          <div class="research-text">
+            <p>Research began with the problem itself: which age groups are most vulnerable to gambling, and why. Studies pointed to two main drivers, a lack of financial knowledge and the desire to win money. This led to the project's core goal: to make visible how the house always wins more than the gamblers.</p>
+            <p>A competitive analysis then mapped existing digital tools aimed at people with gambling problems. It revealed that the market was already full of tools built to support or prevent addiction, but all of them targeted the individual who was already addicted. The gap: no engaging tool existed to make the problem visible and critique it, in order to build awareness among young adults before addiction takes hold.</p>
+            <p>Alongside the market research, a set of discursive and narrative games shaped the game's approach. Each informed a specific design decision from the perspective shift, to the moral weight of every choice, to the idea that storytelling and player agency matter more than visual polish.</p>
+            <p class="image-caption-intro">Below are the competitive analysis mapping the market gap (left), and the design references that shaped the approach (right):</p>
+          </div>
+        </div>
+
+        <div class="research-image-row">
+          <img class="research-image research-image-small" src="assets/images/competitiveanalysis_thehouse.webp" alt="Phone & reputation meter" />
+          <img class="research-image research-image-small" src="assets/images/designreferences.webp" alt="Bubble & file images" />
+        </div>
+
+        <div class="research-text mt-5">
+                    <p><b>Together, this research reframed the entire project and produced the design question:</b></p>
+            <p><i>How can a reflective game raise awareness of problematic gambling among young adults by showing the problem from the house's perspective?</i></p>
+        </div>
+          </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- ── Prototyping -->
+
+    <section class="research-section">
+    <div class="container">
+      <h2 id="define" class="research-heading">02 / LOW-FI PROTOTYPING</h2>
+
+      <div class="research-box">
+        <div class="research-top">
+          <aside class="research-overview">
+            <h3>OVERVIEW</h3>
+            <ul class="research-list">
+              <li>Concept sketching</li>
+              <li>Wireframing</li>
+              <li>Perspective-shift test</li>
+              <li>Rapid mockups</li>
+            </ul>
+          </aside>
+
+          <div class="research-text">
+            <p>Low-fi work started on paper, quick hand sketches and physical wireframes to explore the layout and core idea fast, before committing anything to screen. From there, a first low-fidelity sketch in Figma tested the central idea: placing the player in the role of casino supervisor instead of gambler. 
+              The goal was to see whether the perspective shift was clear, and whether the game's basic logic communicated without explanation.</p>
+            <p>The concept was understood, but it clearly needed a storyline, supporting information, and clearer UI elements to stand on its own. Throughout development, new features were first mocked up in Figma (using screenshots from GDevelop) and tested before being fully built, keeping iteration fast and cheap.</p>
+            <p class="image-caption-intro">Below is the low-fidelity Figma prototype that served as the base for constant testing before the high-fidelity prototype was built:</p>
+          </div>
+        </div>
+
+        <div class="research-image-row">
+          <img class="research-image" src="assets/images/low-fi.webp" alt="Wireframes The House" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── User Testing -->
+
+    <section class="research-section">
+    <div class="container">
+      <h2 id="information-architecture" class="research-heading">03 /  USER TESTING</h2>
+
+      <div class="research-box">
+        <div class="research-top">
+          <aside class="research-overview">
+            <h3>OVERVIEW</h3>
+            <ul class="research-list">
+              <li>6 participants</li>
+              <li>Think-aloud method</li>
+              <li>Observation</li>
+            </ul>
+          </aside>
+
+          <div class="research-text">
+            <p>Six users tested different parts of the game through observation and the think-aloud method. Testing covered four areas:</p>
+             <ul class="research-list">
+            <li><b>Game mechanics:</b> camera switching between gamblers, the alert system, the profit counter</li>
+            <li><b>Information & copy:</b> readability and whether the concept, features, and player role were understood</li>
+            <li><b>Consequences:</b> how clearly the link between a choice and a gambler's situation came across</li>
+            <li><b>Emotional connection:</b> whether players actually felt empathy for the gamblers</li>
+            </ul>
+            <p><b>Key Findings:</b></p>
+             <ul class="research-list">
+            <li>The concept consistently clicked the moment players made a choice and saw its consequence, but players needed storytelling up front to orient them.</li>
+            <li>Labels and buttons were unclear, and the profit number wasn't recognised as the casino's profit.</li>
+            <li>The atmosphere worked, players described it as heavy, sad, even unsettling, which matched the intent.</li>
+            <li>The hardest gap: players understood the system but didn't feel for the gambler. Adding family photos to the files helped, but one player still felt little, and suggested a phone where the gambler's wife calls asking where he is.</li>
+            </ul>
+            <p class="image-caption-intro">Below is an image of one of the users testing the low-fi prototype:</p>
+          </div>
+        </div>
+
+        <img class="research-image research-image-small" src="assets/images/usertesting.webp" alt="Features Prioritization" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Iteration -->
+
+    <section class="research-section">
+    <div class="container">
+      <h2 id="wireframing" class="research-heading">04 / ITERATION</h2>
+
+      <div class="research-box">
+        <div class="research-top">
+          <aside class="research-overview">
+            <h3>OVERVIEW</h3>
+            <ul class="research-list">
+              <li>Feature development</li>
+              <li>Parallel consequences</li>
+              <li>Profit & reputation meters</li>
+              <li>Status bubble & family photos</li>
+            </ul>
+          </aside>
+
+          <div class="research-text">
+            <p>The first version had only basic interactions: camera switching, simple alerts, a profit box. 
+              Testing showed the game needed more depth, a clearer player role, and consequences shown in parallel with the player's choices. 
+              This drove the most important features in the final game:</p>
+          <ul class="research-list">
+              <li><b>The Phone</b> When the player keeps a gambler at the table for more profit, the phone rings: "There's no money left for food!" A direct visual link between the player's decision and the gambler's family. (This came straight from a user's suggestion.)</li>
+              <li><b>The reputation meter</b> Added beside the profit counter to show how the house prioritises its image over people's wellbeing. It creates a real tension: maximise profit, or protect reputation. You rarely get both.</li>
+              <li><b>The status bubble</b> An emoji above each gambler showing their emotional state, and how it shifts with every decision.</li>
+              <li><b>Family photos in the files</b> Each gambler shown with their family, which testing confirmed increased the player's emotional connection.</li>
+            </ul>
+            <p>Together, these make the system visible from the inside, the player doesn't get told how gambling addiction is enabled. They cause it.</p>
+            <p class="image-caption-intro"> These features are shown below:</p>
+          </div>
+        </div>
+
+        <div class="research-image-row">
+          <img class="research-image" src="assets/images/phone.webp" alt="Phone & reputation meter" />
+          <img class="research-image" src="assets/images/bubble.webp" alt="Bubble & file images" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- ── Design -->
+    <section class="project-content mt-4 mb-4">
+        <div class="container">
+        <div class="project-main">
+
+          <div class="project-block">
+          <h2 id="the-design">THE DESIGN</h2>
+
+          <p>Final testing showed the perspective shift communicated clearly, and that players understood the harm because they caused it and not because they were told about it. 
+            A reflective game can build awareness of problematic gambling by letting the player enact what the system usually hides. 
+            Players found the atmosphere convincingly real and could clearly see the problem with gambling, the critique came through.</p>
+          </div>
+
+          <div class="research-text">
+          <p class="image-caption-intro">Swipe through the final game screens below:</p>
+        </div>
+
+          <div class="image-carousel">
+            <button class="carousel-arrow carousel-arrow-prev" aria-label="Previous slide">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <div class="image-carousel-track">
+              <div class="image-carousel-slide">
+                <img src="assets/images/carousel_thehouse.webp" alt="The House app screens" />
+              </div>
+            </div>
+            <button class="carousel-arrow carousel-arrow-next" aria-label="Next slide">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+          </div>
+
+                      <p><b>Sound:</b> Audio is core to the experience. AI-generated music, ambient casino noise, TV static and glitches, and the ring of the phone all build the heavy, unsettling atmosphere testers described firsthand. The game is designed to be played with sound on since much of its emotional weight lives there.</p>
+        </div>
+
+                <hr class="mt-5 mb-5">
+
+            <div class="project-block">
+          <h2>RESULTS</h2>
+          <p>To document whether the final prototype answered the design question, 9 players completed a short survey after playing.</p>
+          <p>The results pointed to a clear pattern: the core concept landed. Every player understood their role as the supervisor (9/9), and the two outcomes that matter most for a discursive game came through strongly as most players felt their decisions had clear consequences, and reflected on how gambling affects people beyond the casino.</p>
+          <p><b>Key results:</b></p>
+          <ul class="research-list">
+              <li><b>100%</b> understood their role as the supervisor</li>
+              <li><b>8 of 9</b> felt their decisions had clear consequences</li>
+              <li><b>8 of 9</b> said the game made them reflect on how gambling affects people outside the casino</li>
+              <li><b>7 of 9</b> found the game engaging</li>
+            </ul>
+            
+            <p class="image-caption-intro">The survey results are shown below:</p>
+
+        <img class="research-image research-image-small" src="assets/images/finalsurvey.webp" alt="Features Prioritization" />
+        </div>
+
+        <hr class="mt-5 mb-5">
+
+            <div class="project-block">
+          <h2>WHAT I LEARNED</h2>
+          <p>This project taught me that designing critique as an experience is a constant balance, engaging enough to play, uncomfortable enough to provoke reflection. 
+              Whether that awareness is enough to actually shift attitudes toward gambling is the open question worth exploring next.</p>
+        </div>
+
+        <hr class="mt-5 mb-5">
+
+            <div class="project-block">
+          <h2>NEXT STEPS</h2>
+          <p>The next step is turning the prototype into a full, playable game. Testing pointed to room for more depth and gameplay parameters as a standalone experience, and that's the direction this is headed.</p>
+              <p><b>The idea is also open to collaboration, anyone interested in building it out further is welcome to reach out.</b></p>
+              <p class="project-footnote">My university final project, awarded the highest grade (VG).</p>
+        </div>
+
+        </div>
+        </section>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo-text">Rosie Zghaib</a>
+      </div>
+
+      <div class="footer-links">
+        <div class="footer-col">
+          <h3 class="footer-title">NAVIGATION</h3>
+          <a href="index.html#work">Portfolio</a>
+          <a href="contact.html">Contact Me</a>
+          <a href="resume.pdf" target="_blank" rel="noopener" class="nav-link-external">
+            Resume
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M7 17 17 7"/><path d="M7 7h10v10"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="footer-col">
+          <h3 class="footer-title">SOCIAL</h3>
+          <a href="#" target="_blank" rel="noopener noreferrer" class="nav-link-external">
+            LinkedIn
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M7 17 17 7"/><path d="M7 7h10v10"/>
+            </svg>
+          </a>
+          <a href="#" target="_blank" rel="noopener noreferrer" class="nav-link-external">
+            Behance
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M7 17 17 7"/><path d="M7 7h10v10"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const overlay = document.querySelector('.nav-overlay');
+    const overlayClose = document.querySelector('.nav-overlay-close');
+
+    function openMenu() {
+      overlay.classList.add('open');
+      overlay.setAttribute('aria-hidden', 'false');
+      toggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+      overlay.classList.remove('open');
+      overlay.setAttribute('aria-hidden', 'true');
+      toggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    toggle.addEventListener('click', openMenu);
+    overlayClose.addEventListener('click', closeMenu);
+
+    document.querySelectorAll('.nav-overlay-links a').forEach(a =>
+      a.addEventListener('click', closeMenu)
+    );
+
+    // Slide header up on scroll down, back down on scroll up
+    const header = document.querySelector('.site-header');
+    let lastScrollY = window.scrollY;
+
+    function syncHeaderOffset() {
+      document.body.style.paddingTop = header.offsetHeight + 'px';
+    }
+    syncHeaderOffset();
+    window.addEventListener('resize', syncHeaderOffset);
+
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      if (y > lastScrollY && y > header.offsetHeight) {
+        header.classList.add('hidden');
+      } else {
+        header.classList.remove('hidden');
+      }
+      lastScrollY = y;
+    }, { passive: true });
+
+    // Image carousel arrow navigation
+    document.querySelectorAll('.image-carousel').forEach((carousel) => {
+      const track = carousel.querySelector('.image-carousel-track');
+      const prevBtn = carousel.querySelector('.carousel-arrow-prev');
+      const nextBtn = carousel.querySelector('.carousel-arrow-next');
+
+      function updateArrows() {
+        const scrollable = track.scrollWidth > track.clientWidth + 1;
+        prevBtn.style.display = scrollable ? 'flex' : 'none';
+        nextBtn.style.display = scrollable ? 'flex' : 'none';
+        if (!scrollable) return;
+        prevBtn.disabled = track.scrollLeft <= 0;
+        nextBtn.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 1;
+      }
+
+      prevBtn.addEventListener('click', () => {
+        track.scrollBy({ left: -track.clientWidth * 0.9, behavior: 'smooth' });
+      });
+      nextBtn.addEventListener('click', () => {
+        track.scrollBy({ left: track.clientWidth * 0.9, behavior: 'smooth' });
+      });
+
+      track.addEventListener('scroll', updateArrows, { passive: true });
+      window.addEventListener('resize', updateArrows);
+      updateArrows();
+    });
+  </script>
+</body>
+</html>

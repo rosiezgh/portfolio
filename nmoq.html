@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NMOQ Tour — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="nmoq-page">
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="nav-logo">Rosie Zghaib</a>
+      <nav class="nav-links">
+        <a href="index.html#work">Portfolio</a>
+        <a href="contact.html">Contact Me</a>
+        <a href="resume.pdf" target="_blank" rel="noopener" class="nav-link-external">
+          Resume
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M7 17 17 7"/><path d="M7 7h10v10"/>
+          </svg>
+        </a>
+      </nav>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="nav-overlay" aria-hidden="true">
+    <button class="nav-overlay-close" aria-label="Close menu">&times;</button>
+    <nav class="nav-overlay-links">
+      <a href="index.html#work">Work</a>
+      <a href="contact.html">Contact Me</a>
+      <a href="resume.pdf" target="_blank" rel="noopener" class="nav-link-external">
+        Resume
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M7 17 17 7"/><path d="M7 7h10v10"/>
+        </svg>
+      </a>
+    </nav>
+  </div>
+
+  <!-- ── Project Hero ── -->
+  <section class="project-hero">
+    <div class="project-hero-img">
+      <!-- Insert hero image here -->
+           <img class="hero-bg" src="assets/images/hero_nmoq.webp" alt="NMOQ Hero" />
+    </div>
+  </section>
+
+  <h1 class="project-title">NMOQ Tour</h1>
+
+  <!-- ── Overview + Content ── -->
+  <section class="project-content">
+    <div class="container project-content-grid">
+
+      <!-- Left column: Overview -->
+      <aside class="project-overview">
+        <h2>OVERVIEW</h2>
+
+        <div class="overview-block">
+          <span class="overview-label">Role</span>
+          <p class="overview-value">Solo · UX/UI design</p>
+        </div>
+
+        <div class="overview-block">
+          <span class="overview-label">Type</span>
+          <p class="overview-value">Concept app · UX case study</p>
+        </div>
+
+        <div class="overview-block">
+          <span class="overview-label">Year</span>
+          <p class="overview-value">2026</p>
+        </div>
+
+        <div class="overview-block">
+          <span class="overview-label">Tools Used</span>
+          <div class="tool-icons">
+            <img class="tool-icon" src="assets/images/figma.webp" alt="Figma" title="Figma" />
+          </div>
+        </div>
+
+        <a href="#the-design" class="play-prototype-btn">
+          Skip to Design
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 5v14" />
+            <path d="M19 12l-7 7-7-7" />
+          </svg>
+        </a>
+
+        <a href="https://www.figma.com/proto/lMWp2U2OxWBYwz64izCpjX/Medium-Fidelity-National-Museum-Qatar?node-id=114-240&p=f&t=wSAiC1iGsQ6LQZOj-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=114%3A240&show-proto-sidebar=1" target="_blank" rel="noopener noreferrer" class="play-prototype-btn play-prototype-btn-outline">
+          Play Prototype
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M7 17 17 7" />
+            <path d="M7 7h10v10" />
+          </svg>
+        </a>
+      </aside>
+
+      <!-- Right column: Problem / Concept / Project Goals -->
+      <div class="project-main">
+
+        <div class="project-block">
+          <h2>PROBLEM</h2>
+          <p><b>The idea started with a real visit. </b>
+            On a trip to the National Museum of Qatar with friends, the group kept getting lost, unsure where they were, what came next, or how much was left. They left having seen only part of the museum, and without the full experience.</p>
+            <p>To check whether this was a personal frustration or a shared one, Google reviews became the first source of evidence. The pattern was clear and repeated: visitors rely on static signage and the website to find their way, and it isn't enough.</p>
+            <ul class="research-list">
+              <li>The museum is large and complex</li>
+              <li>Visitors feel overwhelmed</li>
+              <li>No digital companion exists</li>
+              <li>Information is static</li>
+              <li>Experiences aren't personalized</li>
+            </ul>
+        </div>
+
+        <div class="project-block">
+          <h2>THE APPROACH</h2>
+          <p>Research into existing museum apps revealed a clear pattern. Most museums including major museums like the Louvre and the British Museum offer only static 2D maps that show the layout, but leave visitors to work out where they are. A few take navigation further with more guided, interactive maps, but truly automatic live positioning is rare and for good reason. It demands costly infrastructure, and museums have largely chosen not to invest in it.</p>
+          <p>The most intuitive approach studied wasn't the most advanced one. It was the interactive, well-structured map that guides visitors clearly and lets them orient themselves easily familiar, accessible, and realistic to build. That became the direction: a clear, guided indoor map modelled on mental models people already know, prioritizing clarity and accessibility over costly technology.</p>
+        </div>
+
+        <div class="project-block">
+          <h2>GOAL</h2>
+          <p>Help first-time visitors confidently navigate the museum in limited time, without reading long texts, through a real-time indoor map, zone-based navigation, and step-by-step guidance.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Process ── -->
+  <section class="process-section">
+    <div class="container">
+      <h1 class="process-title">THE PROCESS</h1>
+
+      <div class="process-row">
+        <a href="#research" class="process-card">
+          <div class="process-icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+          </div>
+          <p class="process-label">Research</p>
+        </a>
+
+        <a href="#define" class="process-card">
+          <div class="process-icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+          </div>
+          <p class="process-label">Define</p>
+        </a>
+
+        <a href="#information-architecture" class="process-card">
+          <div class="process-icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+          </div>
+          <p class="process-label"> Information architecture & prioritization</p>
+        </a>
+
+        <a href="#wireframing" class="process-card">
+          <div class="process-icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+          </div>
+          <p class="process-label">Wireframing & prototyping</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Research ── -->
+  <section class="research-section">
+    <div class="container">
+      <h2 id="research" class="research-heading">01 / RESEARCH</h2>
+
+      <div class="research-box">
+        <div class="research-top">
+          <aside class="research-overview">
+            <h3>OVERVIEW</h3>
+            <ul class="research-list">
+              <li>Google Reviews Analysis</li>
+              <li>Competitive Analysis</li>
+              <li>Pain Points & Market Gaps</li>
+            </ul>
+          </aside>
+
+          <div class="research-text">
+            <p>Beyond the personal experience, Google reviews provided real evidence. Visitors repeatedly described the same issues: poor signage, confusing entry and exit, getting lost, no Wi-Fi for the audio guide, and exhibit text that was too small to read.</p>
+            <p>A competitive analysis of four museum apps then examined how each handled navigation. A clear pattern emerged: most rely on static 2D maps that show the layout but not the visitor's position. Only the more interactive approaches, like the Rijksmuseum's, make orientation genuinely easy, guiding visitors clearly without depending on costly live-tracking technology. That intuitive, realistic middle ground became the model for NMOQ Tour: clear guidance on a familiar map, accessible to the widest possible range of visitors.</p>
+            <p class="image-caption-intro">The competitive analysis below breaks down each app's approach:</p>
+          </div>
+        </div>
+
+        <img class="research-image" src="assets/images/competitiveanalysis.webp" alt="Features Prioritization" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- ── Define -->
+
+    <section class="research-section">
+    <div class="container">
+      <h2 id="define" class="research-heading">02 / DEFINE</h2>
+
+      <div class="research-box">
+        <div class="research-top">
+          <aside class="research-overview">
+            <h3>OVERVIEW</h3>
+            <ul class="research-list">
+              <li>2 Personas</li>
+              <li>User Journey Map</li>
+              <li>Problem & Goal Framing</li>
+            </ul>
+          </aside>
+
+          <div class="research-text">
+            <p>Two personas, whose names have been changed for privacy, captured the core audience. Both were first-time visitors from different perspectives. 
+              Sarah, a 26-year-old tourist who had only an hour, skipped long texts, got lost looking for her friends, and missed large parts of the museum. Emma, a 27-year-old local guiding tourist friends, found navigation exhausting, cut the visit short, and was disappointed she couldn't deliver the experience she'd hoped to.</p>
+            <p>A user journey map then organized each persona's actions, thoughts, emotions, and pain points, and surfaced the opportunities the app could address at each stage.</p>
+            <p class="image-caption-intro">The two personas are shown below:</p>
+          </div>
+        </div>
+
+        <div class="research-image-row">
+          <img class="research-image" src="assets/images/sara.webp" alt="Sarah persona" />
+          <img class="research-image" src="assets/images/emma.webp" alt="Emma persona" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Information Architecture -->
+
+    <section class="research-section">
+    <div class="container">
+      <h2 id="information-architecture" class="research-heading">03 /  INFORMATION ARCHITECTURE & PRIORITIZATION</h2>
+
+      <div class="research-box">
+        <div class="research-top">
+          <aside class="research-overview">
+            <h3>OVERVIEW</h3>
+            <ul class="research-list">
+              <li>Feature Prioritization (must / nice / out of scope)</li>
+              <li>Information Architecture</li>
+            </ul>
+          </aside>
+
+          <div class="research-text">
+            <p>Features were prioritized against the evidence where every "must-have" tied directly back to a persona pain point or a review. Six core features made the cut. 
+              Several appealing ideas (audio guide, AI object recognition, group location sharing) were deliberately set aside as "nice to have," and others (ticketing, gamification) ruled out of scope as either already solved or misaligned with the museum's tone.</p>
+            <p>The features were then organized into a clear information architecture with six main sections: Home, Explore, Map, Visit Planner, Saved, and Profile.</p>
+            <p class="image-caption-intro">The resulting information architecture is shown below:</p>
+          </div>
+        </div>
+
+        <img class="research-image" src="assets/images/informationarchitecture.webp" alt="Features Prioritization" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Wireframes & Prototyping -->
+
+    <section class="research-section">
+    <div class="container">
+      <h2 id="wireframing" class="research-heading">04 / WIREFRAMING & PROTOTYPING</h2>
+
+      <div class="research-box">
+        <div class="research-top">
+          <aside class="research-overview">
+            <h3>OVERVIEW</h3>
+            <ul class="research-list">
+              <li>Wireframes</li>
+              <li>3 User-Flow Flowcharts</li>
+              <li>First Figma Prototype</li>
+            </ul>
+          </aside>
+
+          <div class="research-text">
+            <p>Wireframes translated the architecture into layouts, and three flowcharts mapped possible paths through the app for different visit types. 
+              These fed into the first interactive prototype built in Figma, presented in the next section.</p>
+              <p class="image-caption-intro">Below are the three main pages, wireframed early in the process:</p>
+          </div>
+        </div>
+
+        <img class="research-image" src="assets/images/wireframes_nmoq.webp" alt="Wireframes" />
+      </div>
+    </div>
+  </section>
+
+    <!-- ── Design -->
+    <section class="project-content mt-4 mb-4">
+        <div class="container">
+        <div class="project-main">
+
+          <div class="project-block">
+          <h2 id="the-design">THE DESIGN</h2>
+          <p>The first medium-fidelity prototype, built in Figma. Six core features, each answering a specific, evidenced need:</p>
+
+            <ul class="research-list">
+              <li><b>Interactive indoor map:</b> A clear, familiar map that helps visitors orient themselves and see where they're headed. Both personas got lost; reviews repeatedly flag unclear routes.</li>
+              <li><b>Time-based visit planner:</b> 30 min / 1 hour / full visit. Sarah had only an hour and missed most of the museum. Removes decision fatigue.</li>
+              <li><b>Suggested routes:</b> Guided paths for visitors unsure where to start or what's next. Structure without a rigid tour.</li>
+              <li><b>Exhibit highlights:</b> Short, scannable info, because users skip long text and reviews complain about tiny fonts.</li>
+              <li><b>Saved exhibits:</b> Favourite what you see, since visitors forget afterwards. Extends the experience beyond the visit.</li>
+              <li><b>Accessibility basics:</b> Font size, contrast, language and audio. Directly answering real readability complaints for an international audience.</li>
+            </ul>
+          </div>
+          <div class="research-text">
+          <p class="image-caption-intro"> Swipe through the first prototype below:</p>
+          </div>
+
+          <div class="image-carousel">
+            <button class="carousel-arrow carousel-arrow-prev" aria-label="Previous slide">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <div class="image-carousel-track">
+              <div class="image-carousel-slide">
+                <img src="assets/images/carousel_nmoq.webp" alt="NMOQ app screens" />
+              </div>
+            </div>
+            <button class="carousel-arrow carousel-arrow-next" aria-label="Next slide">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <hr class="mt-5 mb-5">
+
+          <div class="project-block">
+        <h2>WHAT I LEARNED</h2>
+          <p>The biggest lesson came from the prototype itself. I invested heavily in the UI of a medium-fidelity prototype before testing any of it, which means if testing reveals problems, some of that polish may turn out to have been premature. 
+            Next time I'd validate the core flow at a lower fidelity first, and only invest in detailed UI once the structure holds up. Fidelity should follow confidence, which means the more certain I am that something works, the more polish it's worth.</p>
+            <p>A second takeaway is restraint is a design decision in itself. Choosing a familiar map over impressive technology felt almost too simple at first, but the research showed that accessibility and familiarity matter more to real visitors than more advanced technology.</p>
+        </div>
+
+        <hr class="mt-5 mb-5">
+
+          <div class="project-block">
+        <h2>NEXT STEPS</h2>
+          <p>This is a first medium-fidelity prototype and has not yet been user tested. That testing is the real next step: putting it in front of first-time visitors to validate the navigation flow and the time-based planner, and to refine the routes before a high-fidelity build.</p>
+            <p>It also means being ready to kill my darlings. Despite the hours invested in this UI, testing may show that parts of it don't work for real visitors and if so, they'll be reworked or cut. The prototype is a hypothesis to be tested, not a finished answer.</p>
+        </div>
+
+        </div>
+        </section>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo-text">Rosie Zghaib</a>
+      </div>
+
+      <div class="footer-links">
+        <div class="footer-col">
+          <h3 class="footer-title">NAVIGATION</h3>
+          <a href="index.html#work">Portfolio</a>
+          <a href="contact.html">Contact Me</a>
+          <a href="resume.pdf" target="_blank" rel="noopener" class="nav-link-external">
+            Resume
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M7 17 17 7"/><path d="M7 7h10v10"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="footer-col">
+          <h3 class="footer-title">SOCIAL</h3>
+          <a href="#" target="_blank" rel="noopener noreferrer" class="nav-link-external">
+            LinkedIn
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M7 17 17 7"/><path d="M7 7h10v10"/>
+            </svg>
+          </a>
+          <a href="#" target="_blank" rel="noopener noreferrer" class="nav-link-external">
+            Behance
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M7 17 17 7"/><path d="M7 7h10v10"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const overlay = document.querySelector('.nav-overlay');
+    const overlayClose = document.querySelector('.nav-overlay-close');
+
+    function openMenu() {
+      overlay.classList.add('open');
+      overlay.setAttribute('aria-hidden', 'false');
+      toggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+      overlay.classList.remove('open');
+      overlay.setAttribute('aria-hidden', 'true');
+      toggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    toggle.addEventListener('click', openMenu);
+    overlayClose.addEventListener('click', closeMenu);
+
+    document.querySelectorAll('.nav-overlay-links a').forEach(a =>
+      a.addEventListener('click', closeMenu)
+    );
+
+    // Slide header up on scroll down, back down on scroll up
+    const header = document.querySelector('.site-header');
+    let lastScrollY = window.scrollY;
+
+    function syncHeaderOffset() {
+      document.body.style.paddingTop = header.offsetHeight + 'px';
+    }
+    syncHeaderOffset();
+    window.addEventListener('resize', syncHeaderOffset);
+
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      if (y > lastScrollY && y > header.offsetHeight) {
+        header.classList.add('hidden');
+      } else {
+        header.classList.remove('hidden');
+      }
+      lastScrollY = y;
+    }, { passive: true });
+
+    // Image carousel arrow navigation
+    document.querySelectorAll('.image-carousel').forEach((carousel) => {
+      const track = carousel.querySelector('.image-carousel-track');
+      const prevBtn = carousel.querySelector('.carousel-arrow-prev');
+      const nextBtn = carousel.querySelector('.carousel-arrow-next');
+
+      function updateArrows() {
+        const scrollable = track.scrollWidth > track.clientWidth + 1;
+        prevBtn.style.display = scrollable ? 'flex' : 'none';
+        nextBtn.style.display = scrollable ? 'flex' : 'none';
+        if (!scrollable) return;
+        prevBtn.disabled = track.scrollLeft <= 0;
+        nextBtn.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 1;
+      }
+
+      prevBtn.addEventListener('click', () => {
+        track.scrollBy({ left: -track.clientWidth * 0.9, behavior: 'smooth' });
+      });
+      nextBtn.addEventListener('click', () => {
+        track.scrollBy({ left: track.clientWidth * 0.9, behavior: 'smooth' });
+      });
+
+      track.addEventListener('scroll', updateArrows, { passive: true });
+      window.addEventListener('resize', updateArrows);
+      updateArrows();
+    });
+  </script>
+</body>
+</html>
