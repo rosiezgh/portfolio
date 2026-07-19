@@ -10,6 +10,36 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* ══════════════════════════════════════════
+   Scroll reveal animations
+   ══════════════════════════════════════════ */
+.reveal-init {
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.process-card.reveal-init {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.6s ease;
+}
+
+.js-reveal .reveal-init {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+.js-reveal .reveal-init.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js-reveal .reveal-init {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 #the-design,
@@ -25,6 +55,7 @@ body {
   color: #131313;
   background-color: #FDFDFD;
   cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'%3E%3Cpath fill='%23026884' stroke='white' stroke-width='1.5' stroke-linejoin='round' paint-order='stroke fill' d='M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z'/%3E%3C/svg%3E") 16 16, auto;
+  overflow-x: hidden;
 }
 
 /* ── nmoq page: text color overrides ── */
@@ -373,10 +404,10 @@ body.feelgreat-page .site-footer {
     height: 220px;
   }
 
-.ticker-content {
-  padding-top: 30px;
-  font-size: 2rem;
-}
+  .ticker-content {
+    padding-top: 30px;
+    font-size: 2rem;
+  }
 }
 
 /* ══════════════════════════════════════════
@@ -389,11 +420,6 @@ body.feelgreat-page .site-footer {
   position: relative;
   overflow: hidden;
   padding-bottom: 3rem;
-}
-
-.content > .container {
-  position: relative;
-  z-index: 1;
 }
 
 /* ── Work / Project Cards ── */
@@ -601,13 +627,9 @@ body.feelgreat-page .site-footer {
   margin-bottom: 2.5rem;
 }
 
-.contact-social {
-  display: flex;
-  gap: 2rem;
-}
-
-.contact-social a {
-  color: #026884;
+/* ── CTA section (index) ── */
+.cta-section {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 /* ══════════════════════════════════════════
@@ -640,7 +662,7 @@ body.feelgreat-page .site-footer {
   font-size: 1.3rem;
   font-weight: 700;
   letter-spacing: -0.02em;
-  color: #131313;
+  color: #ffffff;
   text-decoration: none;
 }
 
@@ -912,6 +934,31 @@ body.feelgreat-page .site-footer {
   margin: 0;
 }
 
+/* ── Tools section (index) ── */
+.tools-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.tool-card {
+  flex: 0 0 auto;
+  width: 160px;
+  cursor: inherit;
+}
+
+.tool-card:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.tool-card .process-icon img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
 /* ── Research section ── */
 .research-section {
   padding: 2rem 0.5rem;
@@ -982,21 +1029,6 @@ body.feelgreat-page .site-footer {
   opacity: 0.65;
 }
 
-.research-image-placeholder {
-  border: 2px dashed rgba(0, 0, 0, 0.2);
-  width: 100%;
-  aspect-ratio: 16 / 7;
-  min-height: 250px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: #888;
-  font-size: 0.95rem;
-  font-weight: 500;
-  background: #f7f7f5;
-}
-
 .research-image {
   width: 80%;
   height: auto;
@@ -1029,22 +1061,6 @@ body.feelgreat-page .site-footer {
 
 .research-image-row .research-image-small {
   flex: 0 1 45%;
-}
-
-.content-image-placeholder {
-  border: 2px dashed rgba(0, 0, 0, 0.2);
-  width: 100%;
-  aspect-ratio: 16 / 7;
-  min-height: 280px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: #888;
-  font-size: 0.95rem;
-  font-weight: 500;
-  background: #f7f7f5;
-  margin: 1.5rem 0;
 }
 
 /* ── Image Carousel (full-bleed, edge-to-edge) ── */
@@ -1156,11 +1172,6 @@ body.feelgreat-page .site-footer {
   .research-image-row .research-image-small {
     flex: 1 1 auto;
   }
-
-  .research-image-placeholder,
-  .content-image-placeholder {
-    min-height: 220px;
-  }
 }
 
 @media (max-width: 600px) {
@@ -1189,10 +1200,5 @@ body.feelgreat-page .site-footer {
 
   .research-box {
     padding: 1.75rem;
-  }
-
-  .research-image-placeholder,
-  .content-image-placeholder {
-    min-height: 180px;
   }
 }
