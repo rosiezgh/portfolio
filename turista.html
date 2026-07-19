@@ -476,6 +476,63 @@
       }
       lastScrollY = y;
     }, { passive: true });
+
+    // Scroll-triggered reveal animations
+    document.documentElement.classList.add('js-reveal');
+
+    const revealEls = document.querySelectorAll(
+      '.project-card, .process-card, .research-box, .research-heading, .contact-wrapper, .contact-info-item, .card-image'
+    );
+
+    const revealCounts = new Map();
+    revealEls.forEach((el) => {
+      el.classList.add('reveal-init');
+      const count = revealCounts.get(el.parentElement) || 0;
+      el.style.transitionDelay = Math.min(count, 5) * 80 + 'ms';
+      revealCounts.set(el.parentElement, count + 1);
+    });
+
+    if ('IntersectionObserver' in window) {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('reveal-visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+
+      revealEls.forEach((el) => revealObserver.observe(el));
+    } else {
+      revealEls.forEach((el) => el.classList.add('reveal-visible'));
+    }
+
+    // Image carousel arrow navigation
+    document.querySelectorAll('.image-carousel').forEach((carousel) => {
+      const track = carousel.querySelector('.image-carousel-track');
+      const prevBtn = carousel.querySelector('.carousel-arrow-prev');
+      const nextBtn = carousel.querySelector('.carousel-arrow-next');
+
+      function updateArrows() {
+        const scrollable = track.scrollWidth > track.clientWidth + 1;
+        prevBtn.style.display = scrollable ? 'flex' : 'none';
+        nextBtn.style.display = scrollable ? 'flex' : 'none';
+        if (!scrollable) return;
+        prevBtn.disabled = track.scrollLeft <= 0;
+        nextBtn.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 1;
+      }
+
+      prevBtn.addEventListener('click', () => {
+        track.scrollBy({ left: -track.clientWidth * 0.9, behavior: 'smooth' });
+      });
+      nextBtn.addEventListener('click', () => {
+        track.scrollBy({ left: track.clientWidth * 0.9, behavior: 'smooth' });
+      });
+
+      track.addEventListener('scroll', updateArrows, { passive: true });
+      window.addEventListener('resize', updateArrows);
+      updateArrows();
+    });
   </script>
 </body>
 </html>
