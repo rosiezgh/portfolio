@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="style.css" />
 </head>
-<body class="contact-page">
+<body>
 
   <header class="site-header">
     <div class="header-inner">
@@ -50,10 +50,10 @@
     <h1 class="contact-hero-title">Contact Me</h1>
   </section>
 
-  <section class="content contact-section">
+  <section class="content">
     <div class="contact-wrapper">
       <h2 class="contact-heading">Let's build something together.</h2>
-      <p class="contact-blurb">I'm currently looking a role in UX/UI design or front-end developing. If you're hiring, collaborating, or just want to talk about design, I'd love to hear from you.</p>
+      <p class="contact-blurb">I'm currently looking for a role in UX/UI design or front-end developing. If you're hiring, collaborating, or just want to talk about design, I'd love to hear from you.</p>
 
       <div class="contact-info-row">
         <div class="contact-info-item">
@@ -68,7 +68,7 @@
             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
             <polyline points="22 6 12 13 2 6"/>
           </svg>
-          <a href="mailto:rosi1@live.se">rosi1@live.se</a>
+          <a href="mailto:rosiezghaib@email.com">rosiezghaib@email.com</a>
         </div>
 
         <div class="contact-info-item">
@@ -80,7 +80,7 @@
         </div>
       </div>
 
-      <a href="mailto:rosi1@live.se" class="hero-cta contact-email-btn">
+      <a href="mailto:rosiezghaib@email.com" class="hero-cta contact-email-btn">
         Send Email
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M7 17 17 7"/><path d="M7 7h10v10"/>
@@ -110,7 +110,7 @@
 
         <div class="footer-col">
           <h3 class="footer-title">SOCIAL</h3>
-          <a href="www.linkedin.com/in/rosie-zghaib-328677233" target="_blank" rel="noopener noreferrer" class="nav-link-external">
+          <a href="https://www.linkedin.com/in/rosie-zghaib-328677233" target="_blank" rel="noopener noreferrer" class="nav-link-external">
             LinkedIn
             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M7 17 17 7"/><path d="M7 7h10v10"/>
@@ -172,6 +172,36 @@
       }
       lastScrollY = y;
     }, { passive: true });
+
+    // Scroll-triggered reveal animations
+    document.documentElement.classList.add('js-reveal');
+
+    const revealEls = document.querySelectorAll(
+      '.project-card, .process-card, .research-box, .research-heading, .contact-wrapper, .contact-info-item, .card-image'
+    );
+
+    const revealCounts = new Map();
+    revealEls.forEach((el) => {
+      el.classList.add('reveal-init');
+      const count = revealCounts.get(el.parentElement) || 0;
+      el.style.transitionDelay = Math.min(count, 5) * 80 + 'ms';
+      revealCounts.set(el.parentElement, count + 1);
+    });
+
+    if ('IntersectionObserver' in window) {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('reveal-visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+
+      revealEls.forEach((el) => revealObserver.observe(el));
+    } else {
+      revealEls.forEach((el) => el.classList.add('reveal-visible'));
+    }
   </script>
 </body>
 </html>
