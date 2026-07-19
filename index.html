@@ -139,6 +139,72 @@
     </div>
   </section>
 
+  <section class="content" id="tools">
+    <div class="projects-wrapper">
+
+      <p class="work-label text-center">Tools</p>
+
+      <div class="tools-row">
+
+        <div class="process-card tool-card">
+          <div class="process-icon">
+            <img src="assets/images/figma.webp" alt="Figma" />
+          </div>
+          <p class="process-label">Figma</p>
+        </div>
+
+        <div class="process-card tool-card">
+          <div class="process-icon">
+            <img src="assets/images/affinity-designer.webp" alt="Affinity Designer" />
+          </div>
+          <p class="process-label">Affinity Designer</p>
+        </div>
+
+        <div class="process-card tool-card">
+          <div class="process-icon">
+            <img src="assets/images/affinity-photo.webp" alt="Affinity Photo" />
+          </div>
+          <p class="process-label">Affinity Photo</p>
+        </div>
+
+        <div class="process-card tool-card">
+          <div class="process-icon">
+            <img src="assets/images/gdevelop.webp" alt="GDevelop" />
+          </div>
+          <p class="process-label">GDevelop</p>
+        </div>
+
+        <div class="process-card tool-card">
+          <div class="process-icon">
+            <img src="assets/images/claude.webp" alt="Claude Code" />
+          </div>
+          <p class="process-label">Claude Code & Design</p>
+        </div>
+
+        <div class="process-card tool-card">
+          <div class="process-icon">
+            <img src="assets/images/vscode-logo.webp" alt="VS Code" />
+          </div>
+          <p class="process-label">VS Code</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="contact-wrapper">
+      <h2 class="contact-heading">Have a project in mind?</h2>
+      <p class="contact-blurb">I design interfaces and build them. If you're hiring or collaborating, I'd love to hear from you.</p>
+      <a href="contact.html" class="hero-cta">
+        Get in touch
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12h14"/><path d="M13 6l6 6-6 6"/>
+        </svg>
+      </a>
+    </div>
+  </section>
+
   <footer class="site-footer">
     <div class="container footer-grid">
       <div class="footer-brand">
@@ -228,6 +294,36 @@
       }
       lastScrollY = y;
     }, { passive: true });
+
+    // Scroll-triggered reveal animations
+    document.documentElement.classList.add('js-reveal');
+
+    const revealEls = document.querySelectorAll(
+      '.project-card, .process-card, .research-box, .research-heading, .contact-wrapper, .contact-info-item, .card-image'
+    );
+
+    const revealCounts = new Map();
+    revealEls.forEach((el) => {
+      el.classList.add('reveal-init');
+      const count = revealCounts.get(el.parentElement) || 0;
+      el.style.transitionDelay = Math.min(count, 5) * 80 + 'ms';
+      revealCounts.set(el.parentElement, count + 1);
+    });
+
+    if ('IntersectionObserver' in window) {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('reveal-visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+
+      revealEls.forEach((el) => revealObserver.observe(el));
+    } else {
+      revealEls.forEach((el) => el.classList.add('reveal-visible'));
+    }
   </script>
 </body>
 </html>
