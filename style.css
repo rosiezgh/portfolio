@@ -266,7 +266,7 @@ body.feelgreat-page .site-footer {
   height: 48px;
   border: none;
   border-radius: 50%;
-  background: rgb(40, 110, 255);
+  background: #0682a4;
   color: #fff;
   display: flex;
   align-items: center;
@@ -353,7 +353,7 @@ body.feelgreat-page .site-footer {
   height: 700px;
   margin-left: -350px;
   margin-top: -350px;
-  background: radial-gradient(circle closest-side, rgba(40, 110, 255, 0.42), rgba(40, 110, 255, 0.16) 45%, rgba(40, 110, 255, 0) 72%);
+  background: radial-gradient(circle closest-side, rgba(40, 162, 255, 0.322), rgba(40, 176, 255, 0.092) 45%, rgba(40, 169, 255, 0) 72%);
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.4s ease;
