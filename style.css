@@ -424,7 +424,7 @@ body.feelgreat-page .site-footer {
   font-size: 0.85rem;
   font-weight: 600;
   color: #fff;
-  background: #131313;
+  background: #026884;
   text-decoration: none;
   padding: 1rem 1.1rem;
   letter-spacing: 0.02em;
@@ -576,7 +576,7 @@ body.feelgreat-page .site-footer {
   font-size: 0.85rem;
   font-weight: 600;
   color: #fff;
-  background: #131313;
+  background: #2B2B2B;
   text-decoration: none;
   padding: 1rem 1.1rem;
   letter-spacing: 0.02em;
@@ -983,7 +983,7 @@ body.feelgreat-page .site-footer {
   font-size: 0.85rem;
   font-weight: 600;
   color: #fff;
-  background: #131313;
+  background: #151515;
   text-decoration: none;
   padding: 1rem 1.1rem;
   letter-spacing: 0.02em;
@@ -999,7 +999,7 @@ body.feelgreat-page .site-footer {
 .play-prototype-btn-outline {
   background: #FDFDFD;
   color: #151515;
-  border: 1px solid #151515;
+  border: 2px solid #151515;
 }
 
 .project-footnote {
@@ -1363,5 +1363,205 @@ body.feelgreat-page .site-footer {
 
   .research-box {
     padding: 1.75rem;
+  }
+}
+
+/* ══════════════════════════════════════════
+   Survey Chart (interactive)
+   ══════════════════════════════════════════ */
+
+.survey-chart {
+  width: 80%;
+  margin: 0 auto;
+  background: #F5F4F1;
+  border-radius: 20px;
+  padding: 2.25rem 2.5rem;
+  color: #131313;
+}
+
+.survey-chart-header h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.survey-chart-sub {
+  font-size: 0.9rem;
+  font-weight: 500;
+  opacity: 0.55;
+  margin-left: 0.15rem;
+}
+
+.survey-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.9rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.survey-stat {
+  background: #FDFDFD;
+  border-radius: 14px;
+  padding: 1.1rem 1.15rem;
+}
+
+.survey-stat-value {
+  font-size: 1.8rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.survey-stat-value span {
+  font-size: 1.1rem;
+  font-weight: 700;
+  opacity: 0.55;
+}
+
+.survey-stat-label {
+  font-size: 0.8rem;
+  opacity: 0.65;
+  line-height: 1.4;
+  margin-top: 0.5rem;
+}
+
+.survey-bars-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  opacity: 0.7;
+  margin-bottom: 1rem;
+}
+
+.survey-hint {
+  font-weight: 400;
+  opacity: 0.7;
+}
+
+.survey-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.survey-bar-row {
+  cursor: pointer;
+  border-radius: 10px;
+  outline: none;
+}
+
+.survey-bar-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.4rem;
+}
+
+.survey-bar-name {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.survey-bar-value {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #026884;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.survey-bar-row:hover .survey-bar-value,
+.survey-bar-row:focus-visible .survey-bar-value,
+.survey-bar-row.is-active .survey-bar-value {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.survey-bar-row--accent .survey-bar-value {
+  color: #8a6d2f;
+}
+
+.survey-bar-track {
+  height: 12px;
+  background: #E9E7E2;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.survey-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: #A9D3DA;
+  transition: filter 0.2s ease;
+}
+
+.survey-bar-row--accent .survey-bar-fill {
+  background: #E3D3AE;
+}
+
+.survey-bar-row:hover .survey-bar-fill,
+.survey-bar-row:focus-visible .survey-bar-fill,
+.survey-bar-row.is-active .survey-bar-fill {
+  filter: brightness(0.92);
+}
+
+.survey-quote {
+  margin-top: 1.75rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(19, 19, 19, 0.1);
+  font-size: 0.9rem;
+  font-style: italic;
+  text-align: center;
+  opacity: 0.75;
+  line-height: 1.6;
+}
+
+.survey-quote cite {
+  display: block;
+  margin-top: 0.5rem;
+  font-style: normal;
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+  .survey-chart {
+    width: 100%;
+    padding: 1.75rem;
+  }
+
+  .survey-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ══════════════════════════════════════════
+   Project CTA (email)
+   ══════════════════════════════════════════ */
+
+.cta-section {
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.cta-text {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.75rem;
+}
+
+.cta-email-btn {
+  display: inline-flex;
+}
+
+@media (max-width: 600px) {
+  .cta-section {
+    padding: 3.5rem 1.25rem;
+  }
+
+  .cta-text {
+    font-size: 1.2rem;
   }
 }
