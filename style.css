@@ -141,6 +141,7 @@ body.feelgreat-page .site-footer {
 }
 
 .nav-links a {
+  position: relative;
   font-size: 0.9rem;
   font-weight: 500;
   color: #555;
@@ -148,9 +149,27 @@ body.feelgreat-page .site-footer {
   transition: color 0.2s ease;
 }
 
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 2px;
+  background: #131313;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.2s ease;
+}
+
 .nav-links a:hover,
 .nav-links a.active {
   color: #131313;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  transform: scaleX(1);
 }
 
 .nav-link-external {
@@ -410,6 +429,7 @@ body.feelgreat-page .site-footer {
   padding: 1rem 1.1rem;
   letter-spacing: 0.02em;
   white-space: nowrap;
+  border-radius: 999px;
   transition: opacity 0.2s ease;
 }
 
@@ -561,6 +581,7 @@ body.feelgreat-page .site-footer {
   padding: 1rem 1.1rem;
   letter-spacing: 0.02em;
   white-space: nowrap;
+  border-radius: 999px;
   transition: opacity 0.2s ease;
 }
 
@@ -677,6 +698,95 @@ body.feelgreat-page .site-footer {
 
 .contact-email-btn {
   margin-bottom: 2.5rem;
+}
+
+/* ══════════════════════════════════════════
+   About Page
+   ══════════════════════════════════════════ */
+
+.about-hero {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 6rem 2rem 5rem;
+}
+
+.about-hero-layout {
+  display: grid;
+  grid-template-columns: 42% 1fr;
+  column-gap: 2.5rem;
+  align-items: start;
+}
+
+.about-hero-heading {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  position: relative;
+  z-index: 2;
+  margin: 0 0 -3.5rem;
+  padding-left: 20%;
+  font-size: clamp(2.25rem, 6vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: #131313;
+}
+
+.about-hero-image {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.about-hero-image img {
+  width: 100%;
+  height: clamp(300px, 38vw, 500px);
+  object-fit: cover;
+  display: block;
+}
+
+.about-hero-text {
+  grid-column: 2;
+  grid-row: 2;
+  padding-top: 3.5rem;
+}
+
+.about-hero-text p {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+
+.about-hero-text p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .about-hero {
+    padding: 4rem 1.25rem 3rem;
+  }
+
+  .about-hero-layout {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .about-hero-heading {
+    margin: 0 0 1.5rem;
+    padding-left: 0;
+    font-size: clamp(2rem, 9vw, 3rem);
+  }
+
+  .about-hero-image {
+    margin-bottom: 1.5rem;
+  }
+
+  .about-hero-image img {
+    height: clamp(260px, 70vw, 420px);
+  }
+
+  .about-hero-text {
+    padding-top: 0;
+  }
 }
 
 /* ── CTA section (index) ── */
@@ -878,6 +988,7 @@ body.feelgreat-page .site-footer {
   padding: 1rem 1.1rem;
   letter-spacing: 0.02em;
   white-space: nowrap;
+  border-radius: 999px;
   transition: opacity 0.2s ease;
 }
 
