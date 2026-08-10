@@ -371,17 +371,92 @@
           <h2>RESULTS</h2>
           <p>To document whether the final prototype answered the design question, 9 players completed a short survey after playing.</p>
           <p>The results pointed to a clear pattern: the core concept landed. Every player understood their role as the supervisor (9/9), and the two outcomes that matter most for a discursive game came through strongly as most players felt their decisions had clear consequences, and reflected on how gambling affects people beyond the casino.</p>
-          <p><b>Key results:</b></p>
-          <ul class="research-list">
-              <li><b>100%</b> understood their role as the supervisor</li>
-              <li><b>8 of 9</b> felt their decisions had clear consequences</li>
-              <li><b>8 of 9</b> said the game made them reflect on how gambling affects people outside the casino</li>
-              <li><b>7 of 9</b> found the game engaging</li>
-            </ul>
             
             <p class="image-caption-intro">The survey results are shown below:</p>
 
-        <img class="research-image research-image-small" src="assets/images/finalsurvey.webp" alt="Features Prioritization" />
+        <div class="survey-chart">
+          <div class="survey-chart-header">
+            <h3>Final Survey <span class="survey-chart-sub">&bull; 9 respondents after playing</span></h3>
+          </div>
+
+          <div class="survey-stats">
+            <div class="survey-stat">
+              <div class="survey-stat-value">100%</div>
+              <div class="survey-stat-label">understood their role as a supervisor</div>
+            </div>
+            <div class="survey-stat">
+              <div class="survey-stat-value">8<span>/9</span></div>
+              <div class="survey-stat-label">felt decisions had clear consequences</div>
+            </div>
+            <div class="survey-stat">
+              <div class="survey-stat-value">8<span>/9</span></div>
+              <div class="survey-stat-label">reflected on gambling's wider harm</div>
+            </div>
+            <div class="survey-stat">
+              <div class="survey-stat-value">7<span>/9</span></div>
+              <div class="survey-stat-label">found the game engaging</div>
+            </div>
+          </div>
+
+          <p class="survey-bars-label">Rated 4&ndash;5 out of 5 <span class="survey-hint">(hover or tap a bar for the exact score)</span></p>
+
+          <div class="survey-bars">
+            <div class="survey-bar-row" tabindex="0" data-value="8" data-total="9">
+              <div class="survey-bar-top">
+                <span class="survey-bar-name">Decisions had clear consequences</span>
+                <span class="survey-bar-value">8/9</span>
+              </div>
+              <div class="survey-bar-track">
+                <div class="survey-bar-fill" style="width: 88.9%;"></div>
+              </div>
+            </div>
+
+            <div class="survey-bar-row" tabindex="0" data-value="8" data-total="9">
+              <div class="survey-bar-top">
+                <span class="survey-bar-name">Reflected on gambling's wider harm</span>
+                <span class="survey-bar-value">8/9</span>
+              </div>
+              <div class="survey-bar-track">
+                <div class="survey-bar-fill" style="width: 88.9%;"></div>
+              </div>
+            </div>
+
+            <div class="survey-bar-row" tabindex="0" data-value="5" data-total="9">
+              <div class="survey-bar-top">
+                <span class="survey-bar-name">Felt power over outcomes</span>
+                <span class="survey-bar-value">5/9</span>
+              </div>
+              <div class="survey-bar-track">
+                <div class="survey-bar-fill" style="width: 55.6%;"></div>
+              </div>
+            </div>
+
+            <div class="survey-bar-row" tabindex="0" data-value="7" data-total="9">
+              <div class="survey-bar-top">
+                <span class="survey-bar-name">Found it engaging</span>
+                <span class="survey-bar-value">7/9</span>
+              </div>
+              <div class="survey-bar-track">
+                <div class="survey-bar-fill" style="width: 77.8%;"></div>
+              </div>
+            </div>
+
+            <div class="survey-bar-row survey-bar-row--accent" tabindex="0" data-value="4" data-total="9">
+              <div class="survey-bar-top">
+                <span class="survey-bar-name">Experienced moral conflict (Yes)</span>
+                <span class="survey-bar-value">4/9</span>
+              </div>
+              <div class="survey-bar-track">
+                <div class="survey-bar-fill" style="width: 44.4%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <blockquote class="survey-quote">
+            &ldquo;[&hellip;] it was really good how u showed a problem in an indirect way making me as a user emotionally feel what the player is going through due to the casino&rsquo;s priorities.&rdquo;
+            <cite>&mdash; survey respondent</cite>
+          </blockquote>
+        </div>
         </div>
 
         <hr class="mt-5 mb-5">
@@ -403,6 +478,18 @@
 
         </div>
         </section>
+
+  <section class="cta-section">
+    <div class="container">
+      <p class="cta-text">Interested in a collaboration or just wanna connect?</p>
+      <a href="mailto:rosiezghaib@email.com" class="hero-cta cta-email-btn">
+        Send me an email
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M7 17 17 7"/><path d="M7 7h10v10"/>
+        </svg>
+      </a>
+    </div>
+  </section>
 
   <footer class="site-footer">
     <div class="container footer-grid">
@@ -563,6 +650,29 @@
       track.addEventListener('scroll', updateArrows, { passive: true });
       window.addEventListener('resize', updateArrows);
       updateArrows();
+    });
+
+    // Survey chart: tap-to-reveal on touch, hover on desktop (CSS handles hover)
+    const surveyBars = document.querySelectorAll('.survey-bar-row');
+    surveyBars.forEach((bar) => {
+      bar.addEventListener('click', (e) => {
+        const alreadyActive = bar.classList.contains('is-active');
+        surveyBars.forEach((b) => b.classList.remove('is-active'));
+        if (!alreadyActive) bar.classList.add('is-active');
+      });
+
+      bar.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          bar.click();
+        }
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.survey-bar-row')) {
+        surveyBars.forEach((b) => b.classList.remove('is-active'));
+      }
     });
   </script>
 </body>
