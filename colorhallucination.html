@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="assets/images/RZ.svg" />
+  <title>Color Hallucinations - Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="nmoq-page">
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="nav-logo">Rosie Zghaib</a>
+      <nav class="nav-links">
+        <a href="index.html#work">Portfolio</a>
+        <a href="research.html">Research</a>
+        <a href="contact.html">Contact Me</a>
+        <a href="resume.pdf" target="_blank" rel="noopener" class="nav-link-external">
+          Resume
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M7 17 17 7"/><path d="M7 7h10v10"/>
+          </svg>
+        </a>
+      </nav>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="nav-overlay" aria-hidden="true">
+    <button class="nav-overlay-close" aria-label="Close menu">&times;</button>
+    <nav class="nav-overlay-links">
+      <a href="index.html#work">Portfolio</a>
+      <a href="research.html">Research</a>
+      <a href="contact.html">Contact Me</a>
+      <a href="resume.pdf" target="_blank" rel="noopener" class="nav-link-external">
+        Resume
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M7 17 17 7"/><path d="M7 7h10v10"/>
+        </svg>
+      </a>
+    </nav>
+  </div>
+
+  <!-- ── Project Hero ── -->
+  <section class="project-hero">
+    <div class="project-hero-img">
+      <!-- Insert hero image here -->
+           <img class="hero-bg" src="assets/images/ai.webp" alt="NMOQ Hero" />
+    </div>
+  </section>
+
+  <h1 class="project-title" style="font-size: clamp(1.5rem, 3.5vw, 3rem); padding-left: 3rem; padding-right: 3rem;">Visualizing AI hallucinations in health related self-diagnosis</h1>
+
+  <!-- ── Overview + Content ── -->
+  <section class="project-content">
+    <div class="container project-content-grid">
+
+      <!-- Left column: Overview -->
+      <aside class="project-overview">
+        <h2>OVERVIEW</h2>
+
+        <div class="overview-block">
+          <span class="overview-label">Role</span>
+          <p class="overview-value">Researcher & author · Team of 3</p>
+        </div>
+
+        <div class="overview-block">
+          <span class="overview-label">Type</span>
+          <p class="overview-value">UX Research · Bachelor's Thesis</p>
+        </div>
+
+        <div class="overview-block">
+          <span class="overview-label">Year</span>
+          <p class="overview-value">2026</p>
+        </div>
+
+        <div class="overview-block">
+          <span class="overview-label">Language</span>
+          <p class="overview-value">Swedish</p>
+        </div>
+
+                <div class="overview-block">
+          <span class="overview-label">Tools Used</span>
+          <div class="tool-icons">
+            <img class="tool-icon" src="assets/images/figma.webp" alt="Figma" title="Figma" />
+          </div>
+        </div>
+
+        <a href="research1.pdf" target="_blank" rel="noopener" class="play-prototype-btn">
+          Open PDF
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M7 17 17 7" />
+            <path d="M7 7h10v10" />
+          </svg>
+        </a>
+
+      </aside>
+
+      <!-- Right column: Problem / Concept / Project Goals -->
+      <div class="project-main">
+
+        <div class="project-block">
+          <h2>PROBLEM</h2>
+          <p>People increasingly turn to ChatGPT for health questions and self-diagnosis. The problem: large language models can generate incorrect information with high linguistic confidence, a phenomenon known as hallucinations. 
+            When users trust these confident-sounding answers uncritically, known as overreliance, it can negatively affect their health decisions.</p>
+            <p>Previous research pointed to color as a promising way to signal uncertainty in AI interfaces, but different approaches had only been studied separately. 
+              No study had compared multiple color variants directly within ChatGPT's interface in a health context. That was the gap this study set out to explore.</p>
+        </div>
+
+        <div class="project-block">
+          <h2>RESEARCH QUESTIONS</h2>
+          <p>1. How do different ways of implementing color in ChatGPT's interface affect users' critical evaluation of health-related AI answers during self-diagnosis?</p>
+          <p>2. Which color variant do users prefer for identifying hallucinations and reducing overreliance?</p>
+        </div>
+
+        <div class="project-block">
+          <h2>THE APPROACH</h2>
+          <p>We used a research-through-design method, an established approach in HCI where prototypes act as both the research tool and the object of study. 
+            This let us explore not just whether color helped, but how users actually responded to different implementations.</p>
+            <p><b>The study combined two methods:</b></p>
+            <ul class="research-list">
+              <li><b>Qualitative in-depth interviews</b> to understand when and why people rely on AI for health questions</li>
+              <li><b>testing of three Figma prototypes</b> with six participants (aged 18–29, without medical training)</li>
+              </ul>
+            <p>We built on existing research (Leiser et al.'s HILL framework), which identified color-marking as one of the most significant 
+              design elements for surfacing potential hallucinations, and focused our study specifically on that element.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Process ── -->
+  <section class="process-section">
+    <div class="container">
+      <h1 class="process-title">THE PROCESS</h1>
+
+      <div class="process-row">
+        <a href="#research" class="process-card">
+          <div class="process-icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+          </div>
+          <p class="process-label">Research & interviews</p>
+        </a>
+
+        <a href="#define" class="process-card">
+          <div class="process-icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+          </div>
+          <p class="process-label">Define</p>
+        </a>
+
+        <a href="#information-architecture" class="process-card">
+          <div class="process-icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+          </div>
+          <p class="process-label">Prototype development</p>
+        </a>
+
+        <a href="#wireframing" class="process-card">
+          <div class="process-icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+          </div>
+          <p class="process-label">User testing</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Research ── -->
+  <section class="research-section">
+    <div class="container">
+      <h2 id="research" class="research-heading">01 / RESEARCH & INTERVIEWS</h2>
+
+      <div class="research-box">
+        <div class="research-top">
+          <aside class="research-overview">
+            <h3>OVERVIEW</h3>
+            <ul class="research-list">
+              <li>Literature Review</li>
+              <li>In-depth Interviews</li>
+              <li>Overreliance & Hallucinations</li>
+            </ul>
+          </aside>
+
+          <div class="research-text">
+            <p>We began by grounding the study in existing research on how large language models generate hallucinations, and why users tend to over-trust confident AI answers. We built on Leiser et al.'s HILL framework, which identified color-marking as one of the most significant design elements for surfacing potential hallucinations.</p>
+            <p>Alongside the literature, we ran qualitative in-depth interviews with our target group (young adults, 18–29, without medical training) to understand when and why they turn to ChatGPT for health questions. A key early insight emerged: overreliance is situational rather than a fixed habit, and simply being aware that hallucinations exist did not automatically lead people to check information critically.</p>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- ── Define -->
+
+    <section class="research-section">
+    <div class="container">
+      <h2 id="define" class="research-heading">02 / DEFINE</h2>
+
+      <div class="research-box">
+        <div class="research-top">
+          <aside class="research-overview">
+            <h3>OVERVIEW</h3>
+            <ul class="research-list">
+              <li>Target Group Definition</li>
+              <li>Design Element Focus</li>
+              <li>Research Questions</li>
+            </ul>
+          </aside>
+
+          <div class="research-text">
+            <p>The interviews helped define the core problem: users needed a way to see which parts of an AI answer were uncertain, without being overwhelmed. From the five design elements identified in prior research, we focused specifically on color as a way to signal uncertainty.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Prototype development -->
+
+    <section class="research-section">
+    <div class="container">
+      <h2 id="information-architecture" class="research-heading">03 /  PROTOTYPE DEVELOPMENT</h2>
+
+      <div class="research-box">
+        <div class="research-top">
+          <aside class="research-overview">
+            <h3>OVERVIEW</h3>
+            <ul class="research-list">
+              <li>3 Figma Prototypes</li>
+              <li>Color Variants</li>
+              <li>Built on ChatGPT's Interface</li>
+            </ul>
+          </aside>
+
+          <div class="research-text">
+            <p>We developed three prototypes modeled on ChatGPT's interface, each applying color differently to mark uncertain information in an AI health response. 
+              Each variant was designed to test which approach best supported critical evaluation.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── User testing -->
+
+    <section class="research-section">
+    <div class="container">
+      <h2 id="wireframing" class="research-heading">04 / USER TESTING</h2>
+
+      <div class="research-box">
+        <div class="research-top">
+          <aside class="research-overview">
+            <h3>OVERVIEW</h3>
+            <ul class="research-list">
+              <li>6 Participants</li>
+              <li>Think-aloud Method</li>
+              <li>Observation</li>
+            </ul>
+          </aside>
+
+          <div class="research-text">
+            <p>We tested the three prototypes with six participants (18-29, without medical training) using think-aloud and observation. 
+              Testing explored how each color variant affected whether participants noticed uncertain information, how they valued it, and which variant they found clearest.</p>
+            <p>All three variants increased participants' awareness of uncertain information and reduced overreliance, though awareness alone didn't always lead them to double-check. 
+              The majority preferred Interface 3, uncertain information marked in red, for its clarity and readability.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+    <!-- ── Design -->
+    <section class="project-content mt-4 mb-4">
+        <div class="container">
+        <div class="project-main">
+
+          <div class="project-block">
+          <h2 id="the-design">KEY FINDINGS</h2>
+          <p>The study surfaced several insights about using color to communicate AI uncertainty:</p>
+
+            <ul class="research-list">
+              <li><b>Overreliance is situational, not fixed:</b> It depended on context and how important the question felt.</li>
+              <li><b>Awareness isn't enough on its own:</b> Knowing hallucinations exist didn't automatically produce critical checking.</li>
+              <li><b>Color reduced overreliance:</b> All three variants changed how participants valued and used the answer.</li>
+              <li><b>Interface 3 was preferred:</b> Marking only uncertain information in red was clearest.</li>
+              <li><b>Red vs. yellow:</b> Participants suggested yellow over red, because it communicates uncertainty rather than outright error. The color works as a risk indicator, not an error indicator, since the AI itself can't confirm which information is actually hallucinated.</li>
+            </ul>
+          </div>
+
+        <hr class="mt-5 mb-5">
+
+          <div class="project-block">
+        <h2>WHAT I LEARNED</h2>
+          <p>The biggest lesson came from the prototype itself. I invested heavily in the UI of a medium-fidelity prototype before testing any of it, which means if testing reveals problems, some of that polish may turn out to have been premature.
+            Next time I'd validate the core flow at a lower fidelity first, and only invest in detailed UI once the structure holds up. Fidelity should follow confidence, which means the more certain I am that something works, the more polish it's worth.</p>
+            <p>A second takeaway is restraint is a design decision in itself. Choosing a familiar map over impressive technology felt almost too simple at first, but the research showed that accessibility and familiarity matter more to real visitors than more advanced technology.</p>
+        </div>
+
+        <hr class="mt-5 mb-5">
+
+          <div class="project-block">
+        <h2>NEXT STEPS</h2>
+          <p>The study points to clear next steps: a larger sample to strengthen the findings, and testing yellow against red to see which better communicates uncertainty.</p>
+            <p>Accessibility is also key and color alone shouldn't be the only signal, especially for users with color blindness (a core WCAG principle). A further direction is exploring whether combining color with source references creates a stronger effect on critical evaluation than color alone.</p>
+        </div>
+
+        </div>
+        </div>
+        </section>
+
+  <section class="project-cta">
+    <div class="container">
+      <p class="project-cta-text">Interested in a collaboration or just wanna connect?</p>
+      <a href="mailto:rosiezghaib@hotmail.com" class="hero-cta project-cta-email-btn">
+        Send me an email
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M7 17 17 7"/><path d="M7 7h10v10"/>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo-text">Rosie Zghaib</a>
+      </div>
+
+      <div class="footer-links">
+        <div class="footer-col">
+          <h3 class="footer-title">NAVIGATION</h3>
+          <a href="index.html#work">Portfolio</a>
+          <a href="research.html">Research</a>
+          <a href="contact.html">Contact Me</a>
+          <a href="resume.pdf" target="_blank" rel="noopener" class="nav-link-external">
+            Resume
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M7 17 17 7"/><path d="M7 7h10v10"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="footer-col">
+          <h3 class="footer-title">SOCIAL</h3>
+          <a href="https://www.linkedin.com/in/rosie-zghaib-328677233" target="_blank" rel="noopener noreferrer" class="nav-link-external">
+            LinkedIn
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M7 17 17 7"/><path d="M7 7h10v10"/>
+            </svg>
+          </a>
+          <a href="https://www.behance.net/rosiezghaib" target="_blank" rel="noopener noreferrer" class="nav-link-external">
+            Behance
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M7 17 17 7"/><path d="M7 7h10v10"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Scroll to top">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <line x1="12" y1="19" x2="12" y2="5"/>
+      <polyline points="5 12 12 5 19 12"/>
+    </svg>
+  </button>
+
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const overlay = document.querySelector('.nav-overlay');
+    const overlayClose = document.querySelector('.nav-overlay-close');
+
+    function openMenu() {
+      overlay.classList.add('open');
+      overlay.setAttribute('aria-hidden', 'false');
+      toggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+      overlay.classList.remove('open');
+      overlay.setAttribute('aria-hidden', 'true');
+      toggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    // Scroll to top
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+    if (scrollTopBtn) {
+      window.addEventListener('scroll', () => {
+        scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+      }, { passive: true });
+
+      scrollTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    toggle.addEventListener('click', openMenu);
+    overlayClose.addEventListener('click', closeMenu);
+
+    document.querySelectorAll('.nav-overlay-links a').forEach(a =>
+      a.addEventListener('click', closeMenu)
+    );
+
+    // Slide header up on scroll down, back down on scroll up
+    const header = document.querySelector('.site-header');
+    let lastScrollY = window.scrollY;
+
+    function syncHeaderOffset() {
+      document.body.style.paddingTop = header.offsetHeight + 'px';
+    }
+    syncHeaderOffset();
+    window.addEventListener('resize', syncHeaderOffset);
+
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      if (y > lastScrollY && y > header.offsetHeight) {
+        header.classList.add('hidden');
+      } else {
+        header.classList.remove('hidden');
+      }
+      lastScrollY = y;
+    }, { passive: true });
+
+    // Scroll-triggered reveal animations
+    document.documentElement.classList.add('js-reveal');
+
+    const revealEls = document.querySelectorAll(
+      '.project-card, .process-card, .research-box, .research-heading, .contact-wrapper, .contact-info-item, .card-image'
+    );
+
+    const revealCounts = new Map();
+    revealEls.forEach((el) => {
+      el.classList.add('reveal-init');
+      const count = revealCounts.get(el.parentElement) || 0;
+      el.style.transitionDelay = Math.min(count, 5) * 80 + 'ms';
+      revealCounts.set(el.parentElement, count + 1);
+    });
+
+    if ('IntersectionObserver' in window) {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('reveal-visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+
+      revealEls.forEach((el) => revealObserver.observe(el));
+    } else {
+      revealEls.forEach((el) => el.classList.add('reveal-visible'));
+    }
+
+    // Image carousel arrow navigation
+    document.querySelectorAll('.image-carousel').forEach((carousel) => {
+      const track = carousel.querySelector('.image-carousel-track');
+      const prevBtn = carousel.querySelector('.carousel-arrow-prev');
+      const nextBtn = carousel.querySelector('.carousel-arrow-next');
+
+      function updateArrows() {
+        const scrollable = track.scrollWidth > track.clientWidth + 1;
+        prevBtn.style.display = scrollable ? 'flex' : 'none';
+        nextBtn.style.display = scrollable ? 'flex' : 'none';
+        if (!scrollable) return;
+        prevBtn.disabled = track.scrollLeft <= 0;
+        nextBtn.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 1;
+      }
+
+      prevBtn.addEventListener('click', () => {
+        track.scrollBy({ left: -track.clientWidth * 0.9, behavior: 'smooth' });
+      });
+      nextBtn.addEventListener('click', () => {
+        track.scrollBy({ left: track.clientWidth * 0.9, behavior: 'smooth' });
+      });
+
+      track.addEventListener('scroll', updateArrows, { passive: true });
+      window.addEventListener('resize', updateArrows);
+      updateArrows();
+    });
+  </script>
+</body>
+</html>
