@@ -364,20 +364,24 @@ body.feelgreat-page .site-footer {
   display: block;
 }
 
-.hero-glow {
+.hero-canvas {
   position: absolute;
   top: 0;
   left: 0;
-  width: 700px;
-  height: 700px;
-  margin-left: -350px;
-  margin-top: -350px;
-  background: radial-gradient(circle closest-side, rgba(40, 162, 255, 0.322), rgba(40, 176, 255, 0.092) 45%, rgba(40, 169, 255, 0) 72%);
   pointer-events: none;
   opacity: 0;
-  transition: opacity 0.4s ease;
-  will-change: transform;
+  transition: opacity 0.5s ease;
   z-index: 1;
+}
+
+.hero-canvas.is-active {
+  opacity: 1;
+}
+
+@media (max-width: 1050px) {
+  .hero-canvas {
+    display: none;
+  }
 }
 
 .hero-text {
@@ -638,6 +642,33 @@ body.feelgreat-page .site-footer {
   font-weight: 700;
   letter-spacing: 0.02em;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+}
+
+.contact-hero-title-group {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  text-align: center;
+}
+
+.contact-hero-title-group .contact-hero-title {
+  position: static;
+  inset: auto;
+  padding-bottom: 0;
+}
+
+.contact-hero-subtitle {
+  margin: 0;
+  max-width: 620px;
+  padding: 0 1.5rem;
+  color: #131313;
+  font-size: clamp(0.95rem, 1.6vw, 1.15rem);
+  font-weight: 400;
+  letter-spacing: normal;
 }
 
 .contact-wrapper {
@@ -1540,28 +1571,28 @@ body.feelgreat-page .site-footer {
    Project CTA (email)
    ══════════════════════════════════════════ */
 
-.cta-section {
+.project-cta {
   padding: 5rem 2rem;
   text-align: center;
 }
 
-.cta-text {
+.project-cta-text {
   font-size: 1.5rem;
   font-weight: 600;
   letter-spacing: -0.01em;
   margin-bottom: 1.75rem;
 }
 
-.cta-email-btn {
+.project-cta-email-btn {
   display: inline-flex;
 }
 
 @media (max-width: 600px) {
-  .cta-section {
+  .project-cta {
     padding: 3.5rem 1.25rem;
   }
 
-  .cta-text {
+  .project-cta-text {
     font-size: 1.2rem;
   }
 }
