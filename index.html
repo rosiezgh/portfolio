@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="assets/images/RZ.svg" />
   <title>Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,6 +18,7 @@
       <a href="index.html" class="nav-logo">Rosie Zghaib</a>
       <nav class="nav-links">
         <a href="#work">Portfolio</a>
+        <a href="research.html">Research</a>
         <a href="contact.html">Contact Me</a>
         <a href="resume.pdf" target="_blank" rel="noopener" class="nav-link-external">
           Resume
@@ -35,6 +37,7 @@
     <button class="nav-overlay-close" aria-label="Close menu">&times;</button>
     <nav class="nav-overlay-links">
       <a href="#work">Portfolio</a>
+      <a href="research.html">Research</a>
       <a href="contact.html">Contact Me</a>
       <a href="resume.pdf" target="_blank" rel="noopener" class="nav-link-external">
         Resume
@@ -47,7 +50,7 @@
 
   <section class="hero">
     <img class="hero-bg" src="assets/images/hero.webp" alt="" />
-    <div class="hero-glow" aria-hidden="true"></div>
+    <canvas class="hero-canvas" aria-hidden="true"></canvas>
 
     <div class="hero-text">
       <div class="hero-text-main">
@@ -216,6 +219,7 @@
         <div class="footer-col">
           <h3 class="footer-title">NAVIGATION</h3>
           <a href="#work">Portfolio</a>
+          <a href="research.html">Research</a>
           <a href="contact.html">Contact Me</a>
           <a href="resume.pdf" target="_blank" rel="noopener" class="nav-link-external">
             Resume
@@ -270,35 +274,304 @@
       document.body.style.overflow = '';
     }
 
-    // Cursor-following blue glow on hero
-    const hero = document.querySelector('.hero');
-    const heroGlow = document.querySelector('.hero-glow');
-    if (hero && heroGlow) {
-      let glowX = 0, glowY = 0, targetX = 0, targetY = 0, glowRaf = null;
+    // Cursor-driven WebGL flow distortion on the hero image
+    (function initHeroFlow() {
+      const hero = document.querySelector('.hero');
+      const heroBgImg = document.querySelector('.hero-bg');
+      const canvas = document.querySelector('.hero-canvas');
+      if (!hero || !heroBgImg || !canvas) return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-      function animateGlow() {
-        glowX += (targetX - glowX) * 0.15;
-        glowY += (targetY - glowY) * 0.15;
-        heroGlow.style.transform = `translate(${glowX}px, ${glowY}px)`;
-        if (Math.abs(targetX - glowX) > 0.5 || Math.abs(targetY - glowY) > 0.5) {
-          glowRaf = requestAnimationFrame(animateGlow);
+      const gl = canvas.getContext('webgl', { premultipliedAlpha: false, antialias: false, alpha: true })
+        || canvas.getContext('experimental-webgl');
+      if (!gl) return;
+
+      const MIN_WIDTH = 1050;
+      const FLOW_RES = 256;
+      const DISSIPATION = 0.96;
+      const SPLAT_RADIUS = 0.0025;
+      const SPLAT_STRENGTH = 0.05;
+      const DISTORTION_STRENGTH = 0.16;
+      const COOLDOWN_MS = 1800;
+
+      function compileShader(type, source) {
+        const shader = gl.createShader(type);
+        gl.shaderSource(shader, source);
+        gl.compileShader(shader);
+        if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+          console.warn(gl.getShaderInfoLog(shader));
+          gl.deleteShader(shader);
+          return null;
+        }
+        return shader;
+      }
+
+      function createProgram(vsSource, fsSource) {
+        const vs = compileShader(gl.VERTEX_SHADER, vsSource);
+        const fs = compileShader(gl.FRAGMENT_SHADER, fsSource);
+        if (!vs || !fs) return null;
+        const program = gl.createProgram();
+        gl.attachShader(program, vs);
+        gl.attachShader(program, fs);
+        gl.linkProgram(program);
+        if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+          console.warn(gl.getProgramInfoLog(program));
+          return null;
+        }
+        return program;
+      }
+
+      const VERTEX_SHADER = `
+        attribute vec2 aPosition;
+        varying vec2 vUv;
+        void main() {
+          vUv = aPosition * 0.5 + 0.5;
+          gl_Position = vec4(aPosition, 0.0, 1.0);
+        }
+      `;
+
+      // Decays the previous flow and stamps a soft velocity splat at the cursor position.
+      const SPLAT_FRAGMENT_SHADER = `
+        precision mediump float;
+        varying vec2 vUv;
+        uniform sampler2D uPrevFlow;
+        uniform vec2 uMouse;
+        uniform vec2 uVelocity;
+        uniform float uRadius;
+        uniform float uAspect;
+        uniform float uDissipation;
+        void main() {
+          vec2 prev = texture2D(uPrevFlow, vUv).rg * uDissipation;
+          vec2 diff = vUv - uMouse;
+          diff.x *= uAspect;
+          float falloff = exp(-dot(diff, diff) / uRadius);
+          vec2 flow = prev + uVelocity * falloff;
+          flow = clamp(flow, vec2(-0.6), vec2(0.6));
+          gl_FragColor = vec4(flow, 0.0, 1.0);
+        }
+      `;
+
+      // Samples the image through the accumulated flow field, with a faint chromatic
+      // shift along the flow direction so the trail reads as liquid, not just warped.
+      const DISPLAY_FRAGMENT_SHADER = `
+        precision mediump float;
+        varying vec2 vUv;
+        uniform sampler2D uImage;
+        uniform sampler2D uFlow;
+        uniform float uStrength;
+        uniform vec2 uCoverScale;
+        uniform vec2 uCoverOffset;
+        void main() {
+          vec2 imgUv = vUv * uCoverScale + uCoverOffset;
+          vec2 flow = texture2D(uFlow, vUv).rg;
+          vec2 distortedUv = imgUv + flow * uStrength;
+          float mag = length(flow);
+          vec2 dir = mag > 0.0001 ? flow / mag : vec2(0.0);
+          float ca = mag * uStrength * 0.5;
+          vec3 color;
+          color.r = texture2D(uImage, distortedUv + dir * ca).r;
+          color.g = texture2D(uImage, distortedUv).g;
+          color.b = texture2D(uImage, distortedUv - dir * ca).b;
+          gl_FragColor = vec4(color, 1.0);
+        }
+      `;
+
+      const splatProgram = createProgram(VERTEX_SHADER, SPLAT_FRAGMENT_SHADER);
+      const displayProgram = createProgram(VERTEX_SHADER, DISPLAY_FRAGMENT_SHADER);
+      if (!splatProgram || !displayProgram) return;
+
+      const quadBuffer = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, quadBuffer);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
+
+      function bindQuad(program) {
+        const loc = gl.getAttribLocation(program, 'aPosition');
+        gl.bindBuffer(gl.ARRAY_BUFFER, quadBuffer);
+        gl.enableVertexAttribArray(loc);
+        gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+      }
+
+      function createFlowTarget(w, h) {
+        const texture = gl.createTexture();
+        gl.bindTexture(gl.TEXTURE_2D, texture);
+        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, w, h, 0, gl.RGBA, gl.UNSIGNED_BYTE, null);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+        const framebuffer = gl.createFramebuffer();
+        gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);
+        gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, texture, 0);
+        gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+        return { texture, framebuffer };
+      }
+
+      let flowA = createFlowTarget(FLOW_RES, FLOW_RES);
+      let flowB = createFlowTarget(FLOW_RES, FLOW_RES);
+      let flowAspect = 1;
+
+      const imageTexture = gl.createTexture();
+      gl.bindTexture(gl.TEXTURE_2D, imageTexture);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+
+      let imageReady = false;
+      function uploadImage() {
+        try {
+          gl.bindTexture(gl.TEXTURE_2D, imageTexture);
+          gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+          gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, heroBgImg);
+          imageReady = true;
+        } catch (err) {
+          imageReady = false; // e.g. tainted canvas when opened over file:// — fall back to the plain <img>
+        }
+      }
+      if (heroBgImg.complete && heroBgImg.naturalWidth) {
+        uploadImage();
+      } else {
+        heroBgImg.addEventListener('load', uploadImage, { once: true });
+      }
+
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      let coverScale = [1, 1];
+      let coverOffset = [0, 0];
+      let enabled = window.innerWidth > MIN_WIDTH;
+
+      function resize() {
+        enabled = window.innerWidth > MIN_WIDTH;
+        const bgRect = heroBgImg.getBoundingClientRect();
+        const heroRect = hero.getBoundingClientRect();
+        canvas.style.left = (bgRect.left - heroRect.left) + 'px';
+        canvas.style.top = (bgRect.top - heroRect.top) + 'px';
+        canvas.style.width = bgRect.width + 'px';
+        canvas.style.height = bgRect.height + 'px';
+        canvas.width = Math.max(1, Math.round(bgRect.width * dpr));
+        canvas.height = Math.max(1, Math.round(bgRect.height * dpr));
+
+        // Replicate object-fit: cover UV mapping so the shader output matches the plain <img>.
+        const boxAspect = bgRect.width / bgRect.height;
+        const imgAspect = (heroBgImg.naturalWidth && heroBgImg.naturalHeight)
+          ? heroBgImg.naturalWidth / heroBgImg.naturalHeight
+          : boxAspect;
+        if (boxAspect > imgAspect) {
+          coverScale = [1, imgAspect / boxAspect];
+          coverOffset = [0, (1 - coverScale[1]) / 2];
         } else {
-          glowRaf = null;
+          coverScale = [boxAspect / imgAspect, 1];
+          coverOffset = [(1 - coverScale[0]) / 2, 0];
+        }
+        flowAspect = boxAspect;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      let mouseUv = [0.5, 0.5];
+      let velocity = [0, 0];
+      let lastActive = 0;
+      let running = false;
+      let rafId = null;
+      let sectionVisible = true;
+
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver((entries) => {
+          sectionVisible = entries[0].isIntersecting;
+        }, { threshold: 0 }).observe(hero);
+      }
+
+      function onPointerMove(e) {
+        if (!enabled) return;
+        const bgRect = heroBgImg.getBoundingClientRect();
+        const nx = Math.min(1, Math.max(0, (e.clientX - bgRect.left) / bgRect.width));
+        const ny = Math.min(1, Math.max(0, 1 - (e.clientY - bgRect.top) / bgRect.height));
+        const dx = nx - mouseUv[0];
+        const dy = ny - mouseUv[1];
+        const dist = Math.hypot(dx, dy) || 1;
+        const speed = Math.min(1, dist * 8);
+        velocity = [(dx / dist) * speed, (dy / dist) * speed];
+        mouseUv = [nx, ny];
+        lastActive = performance.now();
+        if (!running) start();
+      }
+
+      hero.addEventListener('mousemove', onPointerMove);
+      hero.addEventListener('mouseleave', () => { velocity = [0, 0]; });
+
+      function start() {
+        running = true;
+        if (!rafId) rafId = requestAnimationFrame(loop);
+      }
+
+      function stop() {
+        running = false;
+        canvas.classList.remove('is-active');
+        if (rafId) {
+          cancelAnimationFrame(rafId);
+          rafId = null;
         }
       }
 
-      hero.addEventListener('mousemove', (e) => {
-        const rect = hero.getBoundingClientRect();
-        targetX = e.clientX - rect.left;
-        targetY = e.clientY - rect.top;
-        heroGlow.style.opacity = '1';
-        if (!glowRaf) glowRaf = requestAnimationFrame(animateGlow);
-      });
+      function loop() {
+        rafId = null;
+        const withinCooldown = performance.now() - lastActive < COOLDOWN_MS;
 
-      hero.addEventListener('mouseleave', () => {
-        heroGlow.style.opacity = '0';
-      });
-    }
+        if (!enabled || !sectionVisible || document.hidden || !imageReady) {
+          if (withinCooldown) {
+            rafId = requestAnimationFrame(loop);
+          } else {
+            stop();
+          }
+          return;
+        }
+
+        canvas.classList.add('is-active');
+
+        gl.bindFramebuffer(gl.FRAMEBUFFER, flowB.framebuffer);
+        gl.viewport(0, 0, FLOW_RES, FLOW_RES);
+        gl.useProgram(splatProgram);
+        bindQuad(splatProgram);
+        gl.activeTexture(gl.TEXTURE0);
+        gl.bindTexture(gl.TEXTURE_2D, flowA.texture);
+        gl.uniform1i(gl.getUniformLocation(splatProgram, 'uPrevFlow'), 0);
+        gl.uniform2f(gl.getUniformLocation(splatProgram, 'uMouse'), mouseUv[0], mouseUv[1]);
+        gl.uniform2f(
+          gl.getUniformLocation(splatProgram, 'uVelocity'),
+          velocity[0] * SPLAT_STRENGTH,
+          velocity[1] * SPLAT_STRENGTH
+        );
+        gl.uniform1f(gl.getUniformLocation(splatProgram, 'uRadius'), SPLAT_RADIUS);
+        gl.uniform1f(gl.getUniformLocation(splatProgram, 'uAspect'), flowAspect);
+        gl.uniform1f(gl.getUniformLocation(splatProgram, 'uDissipation'), DISSIPATION);
+        gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+
+        const swap = flowA;
+        flowA = flowB;
+        flowB = swap;
+        velocity = [velocity[0] * 0.8, velocity[1] * 0.8];
+
+        gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+        gl.viewport(0, 0, canvas.width, canvas.height);
+        gl.useProgram(displayProgram);
+        bindQuad(displayProgram);
+        gl.activeTexture(gl.TEXTURE0);
+        gl.bindTexture(gl.TEXTURE_2D, imageTexture);
+        gl.uniform1i(gl.getUniformLocation(displayProgram, 'uImage'), 0);
+        gl.activeTexture(gl.TEXTURE1);
+        gl.bindTexture(gl.TEXTURE_2D, flowA.texture);
+        gl.uniform1i(gl.getUniformLocation(displayProgram, 'uFlow'), 1);
+        gl.uniform1f(gl.getUniformLocation(displayProgram, 'uStrength'), DISTORTION_STRENGTH);
+        gl.uniform2f(gl.getUniformLocation(displayProgram, 'uCoverScale'), coverScale[0], coverScale[1]);
+        gl.uniform2f(gl.getUniformLocation(displayProgram, 'uCoverOffset'), coverOffset[0], coverOffset[1]);
+        gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+
+        if (withinCooldown) {
+          rafId = requestAnimationFrame(loop);
+        } else {
+          stop();
+        }
+      }
+    })();
 
     // Scroll to top
     const scrollTopBtn = document.getElementById('scrollTopBtn');
