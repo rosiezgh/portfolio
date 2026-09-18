@@ -672,7 +672,8 @@ body.feelgreat-page .site-footer {
 }
 
 @media (max-width: 768px) {
-  .research-hero-img {
+  .research-hero-img,
+  .contactpage-hero-img {
     height: clamp(360px, 85vw, 560px);
   }
 }
