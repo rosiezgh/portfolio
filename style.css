@@ -671,6 +671,12 @@ body.feelgreat-page .site-footer {
   letter-spacing: normal;
 }
 
+@media (max-width: 768px) {
+  .research-hero-img {
+    height: clamp(360px, 85vw, 560px);
+  }
+}
+
 .contact-wrapper {
   max-width: 700px;
   margin: 0 auto;
